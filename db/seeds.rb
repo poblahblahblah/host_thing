@@ -20,8 +20,8 @@ statuses = Status.create!([
 ])
 
 datacenters = Datacenter.create!([
-  { name: 'va1', vendor: 'Unitas', provider: 'Unitas' },
-  { name: 'tor', vendor: 'Peer1', provider: 'Peer1' },
+  { name: 'va1', vendor: 'HostFolks', provider: 'CoreSite' },
+  { name: 'tor', vendor: 'EdgeHost', provider: 'XO Communications' },
   { name: 'use', vendor: 'Amazon', provider: 'Amazon' }
 ])
 
@@ -32,22 +32,22 @@ operating_systems = OperatingSystem.create!([
 ])
 
 roles = Role.create!([
-  { name: 'Bidder' },
+  { name: 'Bitter' },
   { name: 'dns-slave' },
-  { name: 'Factual' }
+  { name: 'FactServ' }
 ])
 
 nodes = Node.create!([
   {
-    name: 'tor-ns1.tor.adsrvr.org', fqdn: 'tor-ns1.tor.adsrvr.org',
+    name: 'tor-ns1.tor.example.org', fqdn: 'tor-ns1.tor.example.org',
     status_id: 1, datacenter_id: 1, operating_system_id: 1, role_id: 2
   },
   {
-    name: 'tor-ns2.tor.adsrvr.org', fqdn: 'tor-ns2.tor.adsrvr.org',
+    name: 'tor-ns2.tor.example.org', fqdn: 'tor-ns2.tor.example.org',
     status_id: 1, datacenter_id: 1, operating_system_id: 1, role_id: 2
   },
   {
-    name: 'tor-bid001.ops.adsrvr.org', fqdn: 'tor-bid001.ops.adsrvr.org',
+    name: 'tor-bit001.ops.example.org', fqdn: 'tor-bit001.ops.example.org',
     status_id: 4, datacenter_id: 2, operating_system_id: 3, role_id: 1
   }
 ])

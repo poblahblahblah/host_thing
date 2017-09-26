@@ -1,0 +1,26 @@
+<%= form_with model: @operating_system, local: true do |form| %>
+
+  <% if @operating_system.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@operating_system.errors.count, "error") %> prohibited
+        this operating_system from being saved:
+      </h2>
+      <ul>
+        <% @operating_system.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>

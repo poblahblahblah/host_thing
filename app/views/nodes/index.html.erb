@@ -1,0 +1,29 @@
+<h1>Listing nodes</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Datacenter</th>
+    <th>Internal IP Address</th>
+    <th>Management IP Address</th>
+    <th>Operating System</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @nodes.each do |node| %>
+    <tr>
+      <td><%= node.name %></td>
+      <td><%= Status.find(node[:status_id]).name %></td>
+      <td><%= Datacenter.find(node[:datacenter_id]).name %></td>
+      <td><%= node.internal_ip_address %></td>
+      <td><%= node.management_ip_address %></td>
+      <td><%= OperatingSystem.find(node[:operating_system_id]).name %></td>
+      <td><%= link_to 'Show', node_path(node) %></td>
+      <td><%= link_to 'Edit', edit_node_path(node) %></td>
+      <td><%= link_to 'Destroy', node_path(node), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New node', new_node_path %>

@@ -1,0 +1,28 @@
+<p>
+  <strong>Name:</strong>
+  <%= @node.name %>
+</p>
+ 
+<p>
+  <strong>Status:</strong>
+  <%= Status.find(@node[:status_id]).name %>
+</p>
+
+<p>
+  <strong>Datacenter:</strong>
+  <%= Datacenter.find(@node[:datacenter_id]).name %>
+</p>
+
+<p>
+  <strong>Operating System:</strong>
+  <%= OperatingSystem.find(@node[:operating_system_id]).name %>
+</p>
+
+<h2>Comments</h2>
+<%= render @node.comments %>
+ 
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+<%= link_to 'Edit', edit_node_path(@node) %> |
+<%= link_to 'Back', nodes_path %>

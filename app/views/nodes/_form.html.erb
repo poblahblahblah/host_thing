@@ -1,0 +1,61 @@
+<%= form_with model: @node, local: true do |form| %>
+ 
+  <% if @node.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@node.errors.count, "error") %> prohibited
+        this node from being saved:
+      </h2>
+      <ul>
+        <% @node.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :status %><br>
+    <%= form.collection_select(:status_id, Status.all, :id, :name) %>
+  </p>
+
+  <p>
+    <%= form.label :datacenter %><br>
+    <%= form.collection_select(:datacenter_id, Datacenter.all, :id, :name) %>
+  </p>
+
+  <p>
+    <%= form.label :fqdn %><br>
+    <%= form.text_field :fqdn %>
+  </p>
+
+  <p>
+    <%= form.label :serial %><br>
+    <%= form.text_field :serial %>
+  </p>
+
+  <p>
+    <%= form.label :operating_system %><br>
+    <%= form.collection_select(:operating_system_id, OperatingSystem.all, :id, :name) %>
+  </p>
+
+  <p>
+    <%= form.label :internal_ip_address %><br>
+    <%= form.text_field :internal_ip_address %>
+  </p>
+
+  <p>
+    <%= form.label :management_ip_address %><br>
+    <%= form.text_field :management_ip_address %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>

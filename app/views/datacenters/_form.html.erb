@@ -1,0 +1,36 @@
+<%= form_with model: @datacenter, local: true do |form| %>
+
+  <% if @datacenter.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@datacenter.errors.count, "error") %> prohibited
+        this datacenter from being saved:
+      </h2>
+      <ul>
+        <% @datacenter.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :vendor %><br>
+    <%= form.text_field :vendor %>
+  </p>
+
+  <p>
+    <%= form.label :provider %><br>
+    <%= form.text_field :provider %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>

@@ -25,6 +25,11 @@
   </p>
 
   <p>
+    <%= form.label :role %><br>
+    <%= form.collection_select(:role_id, Role.all, :id, :name) %>
+  </p>
+
+  <p>
     <%= form.label :datacenter %><br>
     <%= form.collection_select(:datacenter_id, Datacenter.all, :id, :name) %>
   </p>

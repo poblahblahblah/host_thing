@@ -57,8 +57,8 @@ class NodesController < ApplicationController
 
   def node_params
     params.require(:node).permit(
-      :name, :status_id, :fqdn, :serial, :operating_system_id, :datacenter_id,
-      :internal_ip_address, :management_ip_address
+      :name, :status_id, :fqdn, :serial, :operating_system_id, :role_id,
+      :datacenter_id, :internal_ip_address, :management_ip_address
     )
   end
 

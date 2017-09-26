@@ -9,6 +9,11 @@
 </p>
 
 <p>
+  <strong>Role:</strong>
+  <%= Role.find(@node[:role_id]).name %>
+</p>
+
+<p>
   <strong>Datacenter:</strong>
   <%= Datacenter.find(@node[:datacenter_id]).name %>
 </p>

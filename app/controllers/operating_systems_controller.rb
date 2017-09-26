@@ -22,7 +22,7 @@ class OperatingSystemsController < ApplicationController
   end
 
   def create
-    @operating_system = OperatingSystem.new(status_params)
+    @operating_system = OperatingSystem.new(operating_system_params)
 
     if @operating_system.save
       redirect_to @operating_system

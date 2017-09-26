@@ -1,4 +1,7 @@
 class DatacentersController < ApplicationController
+  # disable the need for AuthenticityToken if JSON
+  protect_from_forgery unless: -> { request.format.json? }
+
   respond_to :html, :json
 
   def index
@@ -25,10 +28,17 @@ class DatacentersController < ApplicationController
     @datacenter = Datacenter.new(datacenter_params)
 
     if @datacenter.save
-      redirect_to @datacenter
+     respond_to do |format|
+        format.html { redirect_to @datacenter }
+        format.json { render json: @datacenter }
+      end
     else
-      render 'new'
+     respond_to do |format|
+        format.html { render 'new' }
+        format.json { render json: @datacenter.errors, status: :unprocessable_entity }
+      end
     end
+
   end
 
   def update

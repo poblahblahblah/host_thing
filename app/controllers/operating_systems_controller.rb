@@ -1,4 +1,7 @@
 class OperatingSystemsController < ApplicationController
+  # disable the need for AuthenticityToken if JSON
+  protect_from_forgery unless: -> { request.format.json? }
+
   respond_to :html, :json
 
   def index
@@ -25,10 +28,17 @@ class OperatingSystemsController < ApplicationController
     @operating_system = OperatingSystem.new(operating_system_params)
 
     if @operating_system.save
-      redirect_to @operating_system
+     respond_to do |format|
+        format.html { redirect_to @operating_system }
+        format.json { render json: @operating_system }
+      end
     else
-      render 'new'
+     respond_to do |format|
+        format.html { render 'new' }
+        format.json { render json: @operating_system.errors, status: :unprocessable_entity }
+      end
     end
+
   end
 
   def update

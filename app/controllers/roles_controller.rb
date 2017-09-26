@@ -1,4 +1,7 @@
 class RolesController < ApplicationController
+  # disable the need for AuthenticityToken if JSON
+  protect_from_forgery unless: -> { request.format.json? }
+
   respond_to :html, :json
 
   def index
@@ -25,9 +28,15 @@ class RolesController < ApplicationController
     @role = Role.new(role_params)
 
     if @role.save
-      redirect_to @role
+     respond_to do |format|
+        format.html { redirect_to @role }
+        format.json { render json: @role }
+      end
     else
-      render 'new'
+     respond_to do |format|
+        format.html { render 'new' }
+        format.json { render json: @role.errors, status: :unprocessable_entity }
+      end
     end
   end
 

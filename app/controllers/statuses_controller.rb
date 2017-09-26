@@ -1,4 +1,7 @@
 class StatusesController < ApplicationController
+  # disable the need for AuthenticityToken if JSON
+  protect_from_forgery unless: -> { request.format.json? }
+
   respond_to :html, :json
 
   def index
@@ -25,10 +28,17 @@ class StatusesController < ApplicationController
     @status = Status.new(status_params)
 
     if @status.save
-      redirect_to @status
+     respond_to do |format|
+        format.html { redirect_to @status }
+        format.json { render json: @status }
+      end
     else
-      render 'new'
+     respond_to do |format|
+        format.html { render 'new' }
+        format.json { render json: @status.errors, status: :unprocessable_entity }
+      end
     end
+
   end
 
   def update

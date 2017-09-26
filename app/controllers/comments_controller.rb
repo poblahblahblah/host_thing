@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  # disable the need for AuthenticityToken if JSON
+  protect_from_forgery unless: -> { request.format.json? }
+
   def create
     @node = Node.find(params[:node_id])
     @comment = @node.comments.create(comment_params)

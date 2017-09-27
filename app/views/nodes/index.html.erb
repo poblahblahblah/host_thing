@@ -1,6 +1,6 @@
-<h1>Listing nodes</h1>
+<h1>Nodes</h1>
  
-<table>
+<table class="table table-hover">
   <tr>
     <th>Name</th>
     <th>Status</th>
@@ -14,18 +14,20 @@
  
   <% @nodes.each do |node| %>
     <tr>
-      <td><%= node.name %></td>
+      <td><a href="nodes/<%= node.id %>"><%= node.name %></a></td>
       <td><%= Status.find(node[:status_id]).name %></td>
       <td><%= Role.find(node[:role_id]).name %></td>
       <td><%= Datacenter.find(node[:datacenter_id]).name %></td>
       <td><%= node.internal_ip_address %></td>
       <td><%= node.management_ip_address %></td>
       <td><%= OperatingSystem.find(node[:operating_system_id]).name %></td>
-      <td><%= link_to 'Show', node_path(node) %></td>
-      <td><%= link_to 'Edit', edit_node_path(node) %></td>
-      <td><%= link_to 'Destroy', node_path(node), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td>
+        <%= link_to 'Show', node_path(node) %>
+        <%= link_to 'Edit', edit_node_path(node) %>
+        <%= link_to 'Destroy', node_path(node), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
     </tr>
   <% end %>
 </table>
 
-<%= link_to 'New node', new_node_path %>
+<%= link_to 'New Node', new_node_path, class: "btn btn-primary" %>

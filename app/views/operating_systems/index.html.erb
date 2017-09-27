@@ -1,19 +1,21 @@
-<h1>Listing operating_systems</h1>
+<h1>Operating Systems</h1>
 
-<table>
+<table class="table table-hover">
   <tr>
     <th>Name</th>
-    <th colspan="4"></th>
+    <th colspan="2"></th>
   </tr>
 
   <% @operating_systems.each do |operating_system| %>
     <tr>
-      <td><%= operating_system.name %></td>
-      <td><%= link_to 'Show', operating_system_path(operating_system) %></td>
-      <td><%= link_to 'Edit', edit_operating_system_path(operating_system) %></td>
-      <td><%= link_to 'Destroy', operating_system_path(operating_system), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><a href="operating_systems/<%= operating_system.id %>"><%= operating_system.name %></a></td>
+      <td>
+        <%= link_to 'Show', operating_system_path(operating_system) %>
+        <%= link_to 'Edit', edit_operating_system_path(operating_system) %>
+        <%= link_to 'Destroy', operating_system_path(operating_system), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
     </tr>
   <% end %>
 </table>
 
-<%= link_to 'New operating_system', new_operating_system_path %>
+<%= link_to 'New Operating System', new_operating_system_path, class: "btn btn-primary" %>

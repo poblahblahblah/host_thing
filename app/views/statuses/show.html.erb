@@ -3,6 +3,15 @@
   <%= @status.name %>
 </p>
 
+<hr>
+
+<p>
+  <% Node.where(role_id: @status.id).ids.each do |node_id| %>
+  <%= link_to Node.find(node_id).name, node_path(Node.find(node_id).id) %><br>
+  <% end %>
+</p>
+
+<hr>
+
 <%= link_to 'Edit', edit_status_path(@status) %> |
 <%= link_to 'Back', statuses_path %>
-

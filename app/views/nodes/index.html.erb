@@ -22,8 +22,8 @@
       <td><%= node.management_ip_address %></td>
       <td><%= OperatingSystem.find(node[:operating_system_id]).name %></td>
       <td>
-        <%= link_to 'Show', node_path(node) %>
-        <%= link_to 'Edit', edit_node_path(node) %>
+        <%= link_to 'Show', node_path(node) %> |
+        <%= link_to 'Edit', edit_node_path(node) %> |
         <%= link_to 'Destroy', node_path(node), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>

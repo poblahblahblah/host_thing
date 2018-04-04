@@ -10,8 +10,8 @@
     <tr>
       <td><a href="roles/<%= role.id %>"><%= role.name %></a></td>
       <td>
-        <%= link_to 'Show', role_path(role) %>
-        <%= link_to 'Edit', edit_role_path(role) %>
+        <%= link_to 'Show', role_path(role) %> |
+        <%= link_to 'Edit', edit_role_path(role) %> |
         <%= link_to 'Destroy', role_path(role), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>

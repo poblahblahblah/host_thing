@@ -14,8 +14,8 @@
       <td><%= datacenter.vendor %></td>
       <td><%= datacenter.provider %></td>
       <td>
-        <%= link_to 'Show', datacenter_path(datacenter) %>
-        <%= link_to 'Edit', edit_datacenter_path(datacenter) %>
+        <%= link_to 'Show', datacenter_path(datacenter) %> |
+        <%= link_to 'Edit', edit_datacenter_path(datacenter) %> |
         <%= link_to 'Destroy', datacenter_path(datacenter), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>

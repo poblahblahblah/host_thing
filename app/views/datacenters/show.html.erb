@@ -13,6 +13,15 @@
   <%= @datacenter.provider %>
 </p>
 
+<hr>
+
+<p>
+  <% Node.where(role_id: @datacenter.id).ids.each do |node_id| %>
+  <%= link_to Node.find(node_id).name, node_path(Node.find(node_id).id) %><br>
+  <% end %>
+</p>
+
+<hr>
+
 <%= link_to 'Edit', edit_datacenter_path(@datacenter) %> |
 <%= link_to 'Back', datacenters_path %>
-

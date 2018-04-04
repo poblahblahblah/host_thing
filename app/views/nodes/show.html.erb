@@ -2,23 +2,31 @@
 <hr>
 <p>
   <strong>Status:</strong>
-  <%= Status.find(@node[:status_id]).name %>
+  <%= link_to Status.find(@node[:status_id]).name, status_path(Status.find(@node[:status_id]).id) %>
 </p>
 
 <p>
   <strong>Role:</strong>
-  <%= Role.find(@node[:role_id]).name %>
+  <%= link_to Role.find(@node[:role_id]).name, role_path(Role.find(@node[:role_id]).id) %>
 </p>
 
 <p>
   <strong>Datacenter:</strong>
-  <%= Datacenter.find(@node[:datacenter_id]).name %>
+  <%= link_to Datacenter.find(@node[:datacenter_id]).name, datacenter_path(Datacenter.find(@node[:datacenter_id]).id) %>
 </p>
 
 <p>
   <strong>Operating System:</strong>
-  <%= OperatingSystem.find(@node[:operating_system_id]).name %>
+  <%= link_to OperatingSystem.find(@node[:operating_system_id]).name, operating_system_path(OperatingSystem.find(@node[:operating_system_id]).id) %>
 </p>
+
+<p>
+  <strong>Contract Dates:</strong>
+  <% if @node.contract_start_date && node.contract_end_date %>
+  <%= @node.contract_start_date %> through <%= @node.contract_end_date %>
+  <% end %>
+</p>
+
 
 <hr>
 <p>

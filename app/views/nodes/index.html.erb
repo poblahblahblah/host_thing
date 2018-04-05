@@ -16,7 +16,10 @@
     <tr>
       <td><a href="nodes/<%= node.id %>"><%= node.name %></a></td>
       <td><%= Status.find(node[:status_id]).name %></td>
-      <td><%= Role.find(node[:role_id]).name %></td>
+      <td><% node.roles.each do |role| %>
+      <%= role.name %>
+      <% end %>
+      </td>
       <td><%= Datacenter.find(node[:datacenter_id]).name %></td>
       <td><%= node.internal_ip_address %></td>
       <td><%= node.management_ip_address %></td>

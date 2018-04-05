@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180404211855) do
+ActiveRecord::Schema.define(version: 20180404225108) do
 
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20180404211855) do
     t.integer "role_id"
     t.datetime "contract_start_date"
     t.datetime "contract_end_date"
+  end
+
+  create_table "nodes_roles", id: false, force: :cascade do |t|
+    t.integer "node_id", null: false
+    t.integer "role_id", null: false
+    t.index ["node_id", "role_id"], name: "index_nodes_roles_on_node_id_and_role_id", unique: true
+    t.index ["role_id", "node_id"], name: "index_nodes_roles_on_role_id_and_node_id", unique: true
   end
 
   create_table "operating_systems", force: :cascade do |t|

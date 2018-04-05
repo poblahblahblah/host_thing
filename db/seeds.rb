@@ -37,18 +37,17 @@ roles = Role.create!([
   { name: 'FactServ' }
 ])
 
-nodes = Node.create!([
-  {
-    name: 'tor-ns1.tor.example.org', fqdn: 'tor-ns1.tor.example.org',
-    status_id: 1, datacenter_id: 1, operating_system_id: 1, role_id: 2
-  },
-  {
-    name: 'tor-ns2.tor.example.org', fqdn: 'tor-ns2.tor.example.org',
-    status_id: 1, datacenter_id: 1, operating_system_id: 1, role_id: 2
-  },
-  {
-    name: 'tor-bit001.ops.example.org', fqdn: 'tor-bit001.ops.example.org',
-    status_id: 4, datacenter_id: 2, operating_system_id: 3, role_id: 1
-  }
-])
-
+#nodes = Node.create!([
+#  {
+#    name: 'tor-ns1', fqdn: 'tor-ns1.tor.example.org', status_id: 1,
+#    datacenter_id: 1, operating_system_id: 1
+#  },
+#  {
+#    name: 'tor-ns2', fqdn: 'tor-ns2.tor.example.org', status_id: 1,
+#    datacenter_id: 1, operating_system_id: 1
+#  },
+#  {
+#    name: 'tor-bit001', fqdn: 'tor-bit001.ops.example.org', status_id: 4,
+#    datacenter_id: 2, operating_system_id: 3
+#  }
+#])

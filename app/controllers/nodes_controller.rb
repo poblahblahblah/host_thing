@@ -29,7 +29,7 @@ class NodesController < ApplicationController
     ensure_status
     ensure_operating_system
     ensure_datacenter
-    ensure_role
+    reject_empty_roles
 
     @node = Node.new(node_params)
 
@@ -48,6 +48,11 @@ class NodesController < ApplicationController
   end
 
   def update
+    ensure_status
+    ensure_operating_system
+    ensure_datacenter
+    reject_empty_roles
+
     @node = Node.find(params[:id])
    
     if @node.update(node_params)
@@ -68,10 +73,11 @@ class NodesController < ApplicationController
 
   def node_params
     params.require(:node).permit(
-      :name, :status, :status_id, :fqdn, :serial, :role, :role_id,
+      :name, :status, :status_id, :fqdn, :serial,
       :datacenter, :datacenter_id, :operating_system, :operating_system_id,
-      :internal_ip_address, :management_ip_address
+      :internal_ip_address, :management_ip_address, roles: []
     )
+    params.require(:node).permit!
   end
 
   def ensure_status
@@ -96,15 +102,13 @@ class NodesController < ApplicationController
     end
   end
 
-  def ensure_role
-    if !params[:node].include?(:role_id)
-      role = nil
-      if params.include?(:role)
-        role = Role.find_by(name: params[:role].to_s)
-      end
-      params[:node][:role_id] = role.id
-    end
+  def reject_empty_roles
+    params[:node][:roles].delete_if(&:empty?)
+
+    # FIME(pob): This is gross and I am sure can be done better.
+    params[:node][:roles].map! {|p| p = Role.find(p)}
   end
+
 
   def ensure_operating_system
     if !params[:node].include?(:operating_system_id)

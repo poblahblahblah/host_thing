@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <strong>Role:</strong>
-  <%= link_to Role.find(@node[:role_id]).name, role_path(Role.find(@node[:role_id]).id) %>
+  <strong>Roles:</strong>
+  <%= safe_join(@node.roles.map { |l| link_to(Role.find(l.id).name, role_path(l.id)) }, ', '.html_safe) %>
 </p>
 
 <p>

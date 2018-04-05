@@ -25,8 +25,8 @@
   </p>
 
   <p>
-    <%= form.label :role %><br>
-    <%= form.collection_select(:role_id, Role.all, :id, :name) %>
+    <%= form.label :roles %><br>
+    <%= form.collection_check_boxes(:roles, Role.all, :id, :name) %>
   </p>
 
   <p>

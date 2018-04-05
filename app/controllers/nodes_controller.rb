@@ -73,8 +73,7 @@ class NodesController < ApplicationController
 
   def node_params
     params.require(:node).permit(
-      :name, :status, :status_id, :fqdn, :serial,
-      :datacenter, :datacenter_id, :operating_system, :operating_system_id,
+      :name, :status_id, :fqdn, :serial, :datacenter_id, :operating_system_id,
       :internal_ip_address, :management_ip_address, roles: []
     )
     params.require(:node).permit!
@@ -121,6 +120,5 @@ class NodesController < ApplicationController
       params[:node][:operating_system_id] = operating_system.id
     end
   end
-
 
 end

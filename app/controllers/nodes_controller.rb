@@ -103,8 +103,6 @@ class NodesController < ApplicationController
 
   def reject_empty_roles
     params[:node][:roles].delete_if(&:empty?)
-
-    # FIME(pob): This is gross and I am sure can be done better.
     params[:node][:roles].map! {|p| p = Role.find(p)}
   end
 

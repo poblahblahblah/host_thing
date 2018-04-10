@@ -1,8 +1,11 @@
 <p>
-  <strong>Name:</strong>
+  <strong>Role Name:</strong>
   <%= @role.name %>
 </p>
-
+<p>
+  <strong>Applications:</strong>
+  <%= safe_join(@role.software_apps.map { |l| link_to(SoftwareApp.find(l.id).name, software_app_path(l.id)) }, ', '.html_safe) %>
+</p>
 <hr>
 
 Nodes belonging to <%= @role.name %>:<br>

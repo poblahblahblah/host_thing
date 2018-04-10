@@ -25,6 +25,8 @@ class RolesController < ApplicationController
   end
 
   def create
+    reject_empty_applications
+
     @role = Role.new(role_params)
 
     if @role.save
@@ -60,7 +62,12 @@ class RolesController < ApplicationController
   private
 
   def role_params
-    params.require(:role).permit(:name)
+    params.require(:role).permit(:name, :software_apps)
+  end
+
+  def reject_empty_roles
+    params[:node][:roles].delete_if(&:empty?)
+    params[:node][:roles].map! {|p| p = Role.find(p)}
   end
 
 end

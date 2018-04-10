@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :statuses, :datacenters, :operating_systems, :roles
+  resources :statuses, :datacenters, :operating_systems, :roles, :software_apps
 
   root 'home#index'
 

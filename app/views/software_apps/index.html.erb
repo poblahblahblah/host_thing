@@ -1,0 +1,24 @@
+<h1>Software Applications</h1>
+
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Roles</th>
+    <th>Actions</th>
+    <th colspan="4"></th>
+  </tr>
+
+  <% @software_apps.each do |software_app| %>
+    <tr>
+      <td><a href="software_apps/<%= software_app.id %>"><%= software_app.name %></a></td>
+      <td><% software_app.roles.each do |role| %><%= role.name %><% end %></td>
+      <td>
+        <%= link_to 'Show', software_app_path(software_app) %> |
+        <%= link_to 'Edit', edit_software_app_path(software_app) %> |
+        <%= link_to 'Destroy', software_app_path(software_app), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Software Application', new_software_app_path, class: "btn btn-primary" %>

@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>Applications:</strong>
+  <%= safe_join(@node.software_apps.map { |l| link_to(SoftwareApp.find(l.id).name, software_app_path(l.id)) }, ', '.html_safe) %>
+</p>
+
+<p>
   <strong>Datacenter:</strong>
   <%= link_to Datacenter.find(@node[:datacenter_id]).name, datacenter_path(Datacenter.find(@node[:datacenter_id]).id) %>
 </p>

@@ -2,6 +2,7 @@ class Node < ApplicationRecord
   require 'resolv'
 
   has_and_belongs_to_many :roles, :dependent => :restrict_with_error
+  has_many :software_apps, :through => :roles
 
   has_many :comments, dependent: :destroy
 

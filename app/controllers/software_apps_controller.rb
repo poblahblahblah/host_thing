@@ -43,6 +43,8 @@ class SoftwareAppsController < ApplicationController
   end
 
   def update
+    reject_empty_roles
+
     @software_app = SoftwareApp.find(params[:id])
 
     if @software_app.update(software_app_params)

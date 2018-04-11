@@ -1,4 +1,4 @@
-# HostDB
+# host_thing
 
 ## Setup
 ```

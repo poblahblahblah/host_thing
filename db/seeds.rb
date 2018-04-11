@@ -35,14 +35,13 @@ operating_systems = OperatingSystem.create!([
 roles = Role.create!([
   { name: 'Bitter' },
   { name: 'Dataserver' },
-  { name: 'BitterAndDataserver' },
   { name: 'dns-slave' },
   { name: 'FactServ' }
 ])
 
 software_apps = SoftwareApp.create!([
-  { name: 'Bitter', roles: [Role.first, Role.third] },
-  { name: 'Dataserver', roles: [Role.second, Role.third] }
+  { name: 'Bitter', roles: [Role.first] },
+  { name: 'Dataserver', roles: [Role.second] }
 ])
 
 
@@ -64,7 +63,7 @@ nodes = Node.create!([
     operating_system_id: 3, internal_ip_address: '10.10.10.13', management_ip_address: '10.10.10.13'
   },
   {
-    name: 'va1-combo001', fqdn: 'va1-combo001.ops.example.org', status_id: 4, datacenter_id: 1, roles: [Role.third],
+    name: 'va1-combo001', fqdn: 'va1-combo001.ops.example.org', status_id: 4, datacenter_id: 1, roles: [Role.first, Role.second],
     operating_system_id: 3, internal_ip_address: '10.10.10.14', management_ip_address: '10.10.10.14'
   },
 ])

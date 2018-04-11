@@ -41,9 +41,10 @@ roles = Role.create!([
 
 software_apps = SoftwareApp.create!([
   { name: 'Bitter', roles: [Role.first] },
-  { name: 'Dataserver', roles: [Role.second] }
+  { name: 'Dataserver', roles: [Role.second] },
+  { name: 'LogCollector', roles: [Role.first, Role.second] },
+  { name: 'BitterCache', roles: [Role.first] }
 ])
-
 
 nodes = Node.create!([
   {

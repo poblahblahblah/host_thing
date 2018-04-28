@@ -12,8 +12,9 @@ class Node < ApplicationRecord
   belongs_to :status
   belongs_to :operating_system
 
-  validates :name, presence: true, length: { minimum: 5 }
-  validates :fqdn, presence: true, length: { minimum: 5 }
+  validates :name, presence: true, length: { minimum: 5 }, uniqueness: true
+  validates :fqdn, presence: true, length: { minimum: 5 }, uniqueness: true
+  validates :serial, presence: true, uniqueness: true
 
   validates :datacenter_id, presence: true
   validates :status_id, presence: true

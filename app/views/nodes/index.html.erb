@@ -18,8 +18,8 @@
       <td><%= Status.find(node[:status_id]).name %></td>
       <td><%= safe_join(node.roles.map { |l| link_to(Role.find(l.id).name, role_path(l.id)) }, ', '.html_safe) %></td>
       <td><%= Datacenter.find(node[:datacenter_id]).name %></td>
-      <td><%= node.internal_ip_address %></td>
-      <td><%= node.management_ip_address %></td>
+      <td><%# node.internal_ip_address %></td>
+      <td><%# node.management_ip_address %></td>
       <td><%= OperatingSystem.find(node[:operating_system_id]).name %></td>
       <td>
         <%= link_to 'Show', node_path(node) %> |

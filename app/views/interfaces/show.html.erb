@@ -1,0 +1,10 @@
+<p>
+  <strong>Interface Name: </strong><%= @interface.name %><br>
+  <strong>Node Name: </strong>FIXME<br>
+  <strong>Interface MAC Address: </strong><%= link_to @interface.mac.address, mac_path(@interface.mac.id) %><br>
+  <strong>IP Addresses: </strong><%= safe_join(@interface.mac.ip_addrs.map { |l| link_to(l.address, ip_addr_path(l.id)) }, ', '.html_safe) %>
+</p>
+
+<hr>
+
+<%= link_to 'Back to Interfaces', interfaces_path %>

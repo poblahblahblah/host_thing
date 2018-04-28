@@ -21,6 +21,11 @@
 </p>
 
 <p>
+  <strong>MAC Addresses:</strong>
+  <%# safe_join(@node.macs.map { |l| link_to(Mac.find(l.id).name, mac_path(l.id)) }, ', '.html_safe) %>
+</p>
+
+<p>
   <strong>Operating System:</strong>
   <%= link_to OperatingSystem.find(@node[:operating_system_id]).name, operating_system_path(OperatingSystem.find(@node[:operating_system_id]).id) %>
 </p>

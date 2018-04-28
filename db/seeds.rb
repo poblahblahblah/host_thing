@@ -49,22 +49,22 @@ software_apps = SoftwareApp.create!([
 nodes = Node.create!([
   {
     name: 'tor-ns1', fqdn: 'tor-ns1.tor.example.org', status_id: 1, datacenter_id: 1, roles: [Role.fourth],
-    operating_system_id: 1, internal_ip_address: '10.10.10.10', management_ip_address: '10.10.10.10'
+    operating_system_id: 1
   },
   {
     name: 'tor-ns2', fqdn: 'tor-ns2.tor.example.org', status_id: 1, datacenter_id: 1, roles: [Role.fourth],
-    operating_system_id: 1, internal_ip_address: '10.10.10.11', management_ip_address: '10.10.10.11'
+    operating_system_id: 1
   },
   {
     name: 'tor-bit001', fqdn: 'tor-bit001.ops.example.org', status_id: 4, datacenter_id: 2, roles: [Role.first],
-    operating_system_id: 3, internal_ip_address: '10.10.10.12', management_ip_address: '10.10.10.12'
+    operating_system_id: 3
   },
   {
     name: 'tor-bit002', fqdn: 'tor-bit002.ops.example.org', status_id: 4, datacenter_id: 2, roles: [Role.first],
-    operating_system_id: 3, internal_ip_address: '10.10.10.13', management_ip_address: '10.10.10.13'
+    operating_system_id: 3
   },
   {
     name: 'va1-combo001', fqdn: 'va1-combo001.ops.example.org', status_id: 4, datacenter_id: 1, roles: [Role.first, Role.second],
-    operating_system_id: 3, internal_ip_address: '10.10.10.14', management_ip_address: '10.10.10.14'
+    operating_system_id: 3
   },
 ])

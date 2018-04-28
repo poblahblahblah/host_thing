@@ -4,7 +4,6 @@ class AllowNodesToHaveMultipleRoles < ActiveRecord::Migration[5.1]
       t.index [:role_id, :node_id], :unique => true
       t.index [:node_id, :role_id], :unique => true
     end
-
   end
 
   def up

@@ -25,11 +25,12 @@ class NodesController < ApplicationController
   end
 
   def create
+    reject_empty_roles
+    reject_empty_interfaces
 
     ensure_status
     ensure_operating_system
     ensure_datacenter
-    reject_empty_roles
 
     @node = Node.new(node_params)
 
@@ -48,10 +49,12 @@ class NodesController < ApplicationController
   end
 
   def update
+    reject_empty_roles
+    reject_empty_interfaces
+
     ensure_status
     ensure_operating_system
     ensure_datacenter
-    reject_empty_roles
 
     @node = Node.find(params[:id])
    
@@ -74,7 +77,7 @@ class NodesController < ApplicationController
   def node_params
     params.require(:node).permit(
       :name, :status_id, :fqdn, :serial, :datacenter_id, :operating_system_id,
-      :internal_ip_address, :management_ip_address, roles: []
+      :interfaces, roles: []
     )
     params.require(:node).permit!
   end
@@ -101,11 +104,22 @@ class NodesController < ApplicationController
     end
   end
 
-  def reject_empty_roles
-    params[:node][:roles].delete_if(&:empty?)
-    params[:node][:roles].map! {|p| p = Role.find(p)}
+  def ensure_interfaces
+    #if !params[:node].key?(:interfaces) && !params[:node][:interfaces].empty?
+      interface_ids = []
+      # FIXME(pob): We will want to automatically create multiple interfaces when getting a POST/PUT
+      # interfaces should have a single mac address
+      # mac addresses should have 0-many IP addresses
+      #params[:node][:interfaces].each do |interface|
+      #  interface_ids << Interface.find_or_create_by(
+      #    name: interface[:name],
+      #    mac: interface[:mac],
+      #    ips: interface[:ips]
+      #  )
+      #end
+      #params[:node][:interface_ids] = interface_ids
+    #end
   end
-
 
   def ensure_operating_system
     if !params[:node].include?(:operating_system_id)
@@ -116,6 +130,20 @@ class NodesController < ApplicationController
         operating_system = OperatingSystem.find_or_create_by(name: 'Unknown Operating System')
       end
       params[:node][:operating_system_id] = operating_system.id
+    end
+  end
+
+  def reject_empty_roles
+    if params[:node].key?(:roles)
+      params[:node][:roles].delete_if(&:empty?)
+      params[:node][:roles].map! {|p| p = Role.find(p)}
+    end
+  end
+
+  def reject_empty_interfaces
+    if params[:node].key?(:interfaces)
+      params[:node][:interfaces].delete_if(&:empty?)
+      params[:node][:interfaces].map! {|p| p = Interface.find(p)}
     end
   end
 

@@ -1,0 +1,23 @@
+<h1>IP Addresses</h1>
+
+<table class="table table-hover">
+  <tr>
+    <th>IP Address</th>
+    <th>MAC Address</th>
+    <th>Host and Interface</th>
+    <th>Actions</th>
+    <th colspan="4"></th>
+  </tr>
+
+  <% @ip_addrs.each do |ip_addr| %>
+    <tr>
+      <td><%= link_to ip_addr.address, ip_addr_path(ip_addr.id) %></td>
+      <td><%= link_to ip_addr.mac.address, mac_path(ip_addr.mac.id) %></td>
+      <td>FIXME - <%= link_to ip_addr.mac.interface.name, interface_path(ip_addr.mac.interface.id) %></td>
+      <td>
+        <%= link_to 'Show', ip_addr_path(ip_addr) %> |
+        <%= link_to 'Destroy', ip_addr_path(ip_addr), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

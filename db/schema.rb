@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410214130) do
+ActiveRecord::Schema.define(version: 2018_04_11_055213) do
 
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
@@ -29,12 +29,32 @@ ActiveRecord::Schema.define(version: 20180410214130) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "interfaces", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ip_addrs", force: :cascade do |t|
+    t.integer "mac_id"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mac_id"], name: "index_ip_addrs_on_mac_id"
+  end
+
+  create_table "macs", force: :cascade do |t|
+    t.integer "interface_id"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interface_id"], name: "index_macs_on_interface_id"
+  end
+
   create_table "nodes", force: :cascade do |t|
     t.string "name"
     t.string "fqdn"
     t.string "serial"
-    t.string "internal_ip_address"
-    t.string "management_ip_address"
     t.integer "datacenter_id"
     t.integer "operating_system_id"
     t.integer "status_id"

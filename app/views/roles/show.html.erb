@@ -4,7 +4,7 @@
 </p>
 <p>
   <strong>Applications:</strong>
-  <%= safe_join(@role.software_apps.map { |l| link_to(SoftwareApp.find(l.id).name, software_app_path(l.id)) }, ', '.html_safe) %>
+  <%= safe_join(@role.software_apps.map { |l| link_to l.name, software_app_path(l.id) }, ', '.html_safe) %>
 </p>
 <hr>
 
@@ -19,7 +19,7 @@ Nodes belonging to <%= @role.name %>:<br>
 
   <% @role.nodes.map.each do |node| %>
     <tr>
-      <td><%= link_to Node.find(node.id).name, node_path(Node.find(node.id).id) %><br></td>
+      <td><%= link_to node.name, node_path(node.id) %><br></td>
     </tr>
   <% end %>
 </table>
@@ -27,4 +27,4 @@ Nodes belonging to <%= @role.name %>:<br>
 
 
 <%= link_to 'Edit', edit_role_path(@role) %> |
-<%= link_to 'Back', roles_path %>
+<%= link_to 'Back to Role List', roles_path %>

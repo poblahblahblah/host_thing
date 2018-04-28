@@ -46,6 +46,10 @@ software_apps = SoftwareApp.create!([
   { name: 'BitterCache', roles: [Role.first] }
 ])
 
+interfaces = Interface.create!([
+  { name: 'en0', mac_attributes: { address: "dd:a9:04:82:dc:12", ip_addrs_attributes: [{address: "192.168.1.246"}, {address: "2601:1c2:1b7f:8734:82a:d230:663a:5d08" }] } }
+])
+
 nodes = Node.create!([
   {
     name: 'tor-ns1', fqdn: 'tor-ns1.tor.example.org', status_id: 1, datacenter_id: 1, roles: [Role.fourth],

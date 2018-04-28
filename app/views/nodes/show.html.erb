@@ -2,32 +2,32 @@
 <hr>
 <p>
   <strong>Status:</strong>
-  <%= link_to Status.find(@node[:status_id]).name, status_path(Status.find(@node[:status_id]).id) %>
+  <%= link_to @node.status.name, status_path(@node.status.id) %>
 </p>
 
 <p>
   <strong>Roles:</strong>
-  <%= safe_join(@node.roles.map { |l| link_to(Role.find(l.id).name, role_path(l.id)) }, ', '.html_safe) %>
+  <%= safe_join(@node.roles.map { |l| link_to(l.name, role_path(l.id)) }, ', '.html_safe) %>
 </p>
 
 <p>
   <strong>Applications:</strong>
-  <%= safe_join(@node.software_apps.map { |l| link_to(SoftwareApp.find(l.id).name, software_app_path(l.id)) }, ', '.html_safe) %>
+  <%= safe_join(@node.software_apps.map { |l| link_to(l.name, software_app_path(l.id)) }, ', '.html_safe) %>
 </p>
 
 <p>
   <strong>Datacenter:</strong>
-  <%= link_to Datacenter.find(@node[:datacenter_id]).name, datacenter_path(Datacenter.find(@node[:datacenter_id]).id) %>
+  <%= link_to @node.datacenter.name, datacenter_path(@node.datacenter.id) %>
 </p>
 
 <p>
   <strong>MAC Addresses:</strong>
-  <%# safe_join(@node.macs.map { |l| link_to(Mac.find(l.id).name, mac_path(l.id)) }, ', '.html_safe) %>
+  <%# FIXME safe_join(@node.macs.map { |l| link_to(Mac.find(l.id).name, mac_path(l.id)) }, ', '.html_safe) %>
 </p>
 
 <p>
   <strong>Operating System:</strong>
-  <%= link_to OperatingSystem.find(@node[:operating_system_id]).name, operating_system_path(OperatingSystem.find(@node[:operating_system_id]).id) %>
+  <%= link_to @node.operating_system.name, operating_system_path(@node.operating_system.id) %>
 </p>
 
 <p>
@@ -50,4 +50,4 @@
 </p>
 
 <%= link_to 'Edit', edit_node_path(@node) %> |
-<%= link_to 'Back', nodes_path %>
+<%= link_to 'Back to Nodes List', nodes_path %>

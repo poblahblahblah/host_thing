@@ -6,8 +6,7 @@
     <th>Status</th>
     <th>Role</th>
     <th>Datacenter</th>
-    <th>Internal IP Address</th>
-    <th>Management IP Address</th>
+    <th>IP Address</th>
     <th>Operating System</th>
     <th colspan="3"></th>
   </tr>
@@ -15,12 +14,11 @@
   <% @nodes.each do |node| %>
     <tr>
       <td><a href="nodes/<%= node.id %>"><%= node.name %></a></td>
-      <td><%= Status.find(node[:status_id]).name %></td>
-      <td><%= safe_join(node.roles.map { |l| link_to(Role.find(l.id).name, role_path(l.id)) }, ', '.html_safe) %></td>
-      <td><%= Datacenter.find(node[:datacenter_id]).name %></td>
+      <td><%= link_to node.status.name, status_path(node.status_id) %></td>
+      <td><%= safe_join(node.roles.map { |l| link_to(l.name, role_path(l.id)) }, ', '.html_safe) %></td>
+      <td><%= link_to node.datacenter.name, datacenter_path(node.datacenter.id) %></td>
       <td><%# node.internal_ip_address %></td>
-      <td><%# node.management_ip_address %></td>
-      <td><%= OperatingSystem.find(node[:operating_system_id]).name %></td>
+      <td><%= link_to node.operating_system.name, operating_system_path(node.operating_system.id) %></td>
       <td>
         <%= link_to 'Show', node_path(node) %> |
         <%= link_to 'Edit', edit_node_path(node) %> |

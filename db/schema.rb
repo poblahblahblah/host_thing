@@ -33,9 +33,11 @@ ActiveRecord::Schema.define(version: 2018_04_11_055213) do
   end
 
   create_table "interfaces", force: :cascade do |t|
+    t.bigint "node_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["node_id"], name: "index_interfaces_on_node_id"
   end
 
   create_table "ip_addrs", force: :cascade do |t|

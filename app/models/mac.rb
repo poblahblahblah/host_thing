@@ -4,6 +4,7 @@ class Mac < ApplicationRecord
 
   belongs_to :interface
   has_many :ip_addrs, dependent: :destroy
+  has_one :node, through: :interface
 
   accepts_nested_attributes_for :ip_addrs
 

@@ -1,6 +1,5 @@
 <p>
-  <strong>Name:</strong>
-  <%= @operating_system.name %>
+  <strong>Name: </strong><%= @operating_system.name %><br>
 </p>
 
 <hr>
@@ -25,4 +24,4 @@ Nodes belonging to <%= @operating_system.name %>:<br>
 <hr>
 
 <%= link_to 'Edit', edit_operating_system_path(@operating_system) %> |
-<%= link_to 'Back', operating_systems_path %>
+<%= link_to 'Back to Operating System List', operating_systems_path %>

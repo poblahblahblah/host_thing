@@ -1,13 +1,7 @@
 <p>
-  <strong>Datacenter Name:</strong><%= @datacenter.name %>
-</p>
-
-<p>
-  <strong>Datacenter Vendor:</strong><%= @datacenter.vendor %>
-</p>
-
-<p>
-  <strong>Datacenter Provider:</strong><%= @datacenter.provider %>
+  <strong>Datacenter Name: </strong><%= @datacenter.name %><br>
+  <strong>Datacenter Vendor: </strong><%= @datacenter.vendor %><br>
+  <strong>Datacenter Provider: </strong><%= @datacenter.provider %><br>
 </p>
 
 <hr>
@@ -30,4 +24,4 @@ Nodes Belonging to <%= @datacenter.name %>:<br>
 </p>
 
 <%= link_to 'Edit', edit_datacenter_path(@datacenter) %> |
-<%= link_to 'Back', datacenters_path %>
+<%= link_to 'Back to Datacenter List', datacenters_path %>

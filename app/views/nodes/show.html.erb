@@ -1,44 +1,17 @@
 <h2><%= @node.name %></h2>
 <hr>
 <p>
-  <strong>Status:</strong>
-  <%= link_to @node.status.name, status_path(@node.status.id) %>
+  <strong>Status: </strong><%= link_to @node.status.name, status_path(@node.status.id) %><br>
+  <strong>Roles: </strong><%= safe_join(@node.roles.map { |l| link_to(l.name, role_path(l.id)) }, ', '.html_safe) %><br>
+  <strong>Applications: </strong><%= safe_join(@node.software_apps.map { |l| link_to(l.name, software_app_path(l.id)) }, ', '.html_safe) %><br>
+  <strong>Datacenter: </strong><%= link_to @node.datacenter.name, datacenter_path(@node.datacenter.id) %><br>
+  <strong>MAC Addresses: </strong><%# FIXME safe_join(@node.macs.map { |l| link_to(Mac.find(l.id).name, mac_path(l.id)) }, ', '.html_safe) %><br>
+  <strong>Operating System: </strong><%= link_to @node.operating_system.name, operating_system_path(@node.operating_system.id) %><br>
+  <strong>Contract Dates: </strong><% if @node.contract_start_date && node.contract_end_date %><%= @node.contract_start_date %> through <%= @node.contract_end_date %><% end %><br>
 </p>
-
-<p>
-  <strong>Roles:</strong>
-  <%= safe_join(@node.roles.map { |l| link_to(l.name, role_path(l.id)) }, ', '.html_safe) %>
-</p>
-
-<p>
-  <strong>Applications:</strong>
-  <%= safe_join(@node.software_apps.map { |l| link_to(l.name, software_app_path(l.id)) }, ', '.html_safe) %>
-</p>
-
-<p>
-  <strong>Datacenter:</strong>
-  <%= link_to @node.datacenter.name, datacenter_path(@node.datacenter.id) %>
-</p>
-
-<p>
-  <strong>MAC Addresses:</strong>
-  <%# FIXME safe_join(@node.macs.map { |l| link_to(Mac.find(l.id).name, mac_path(l.id)) }, ', '.html_safe) %>
-</p>
-
-<p>
-  <strong>Operating System:</strong>
-  <%= link_to @node.operating_system.name, operating_system_path(@node.operating_system.id) %>
-</p>
-
-<p>
-  <strong>Contract Dates:</strong>
-  <% if @node.contract_start_date && node.contract_end_date %>
-  <%= @node.contract_start_date %> through <%= @node.contract_end_date %>
-  <% end %>
-</p>
-
 
 <hr>
+
 <p>
 <b>Node Notes:</b>
 <%= render @node.comments %>
@@ -50,4 +23,4 @@
 </p>
 
 <%= link_to 'Edit', edit_node_path(@node) %> |
-<%= link_to 'Back to Nodes List', nodes_path %>
+<%= link_to 'Back to Node List', nodes_path %>

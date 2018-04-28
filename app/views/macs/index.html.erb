@@ -5,7 +5,7 @@
     <th>MAC Address</th>
     <th>IP Addresses</th>
     <th>Interface</th>
-    <th>Node</th>
+    <th>Node Name</th>
     <th>Actions</th>
     <th colspan="4"></th>
   </tr>
@@ -14,8 +14,8 @@
     <tr>
       <td><a href="macs/<%= mac.id %>"><%= mac.address %></a></td>
       <td><%= safe_join(mac.ip_addrs.map { |l| link_to(l.address, ip_addr_path(l.id)) }[0..1], ', '.html_safe) %></td>
-      <td><%= link_to mac.interface.name, interface_path(mac.interface_id) %><br>
-      <td>FIXME</td>
+      <td><%= link_to mac.interface.name, interface_path(mac.interface_id) %></td>
+      <td><%= link_to mac.node.name, node_path(mac.node.id) %></td>
       <td>
         <%= link_to 'Show', mac_path(mac) %> |
         <%= link_to 'Destroy', mac_path(mac), method: :delete, data: { confirm: 'Are you sure?' } %>

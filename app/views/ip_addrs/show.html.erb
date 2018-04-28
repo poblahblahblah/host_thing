@@ -2,8 +2,9 @@
   <strong>IP Address: </strong><%= @ip_addr.address %><br>
   <strong>Mac Address: </strong><%= link_to @ip_addr.mac.address, mac_path(@ip_addr.mac.id) %><br>
   <strong>Interface: </strong><%= link_to @ip_addr.mac.interface.name, interface_path(@ip_addr.mac.interface.id) %><br>
+  <strong>Node Name: </strong><%= link_to @ip_addr.node.name, node_path(@ip_addr.node.id) %><br>
 </p>
 
 <hr>
 
-<%= link_to 'Back to IP Addresses', ip_addrs_path %>
+<%= link_to 'Back to IP Address List', ip_addrs_path %>

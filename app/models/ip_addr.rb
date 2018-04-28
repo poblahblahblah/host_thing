@@ -9,6 +9,8 @@ class IpAddr < ApplicationRecord
   # interface without a mac address.
   belongs_to :mac, -> { includes :interface }, required: false
 
+  has_one :node, through: :mac
+
   validates :address, presence: true, uniqueness: true,
     format: { with: Regexp.union(Resolv::IPv4::Regex, Resolv::IPv6::Regex) }
 

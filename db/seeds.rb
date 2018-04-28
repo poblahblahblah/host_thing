@@ -46,12 +46,6 @@ software_apps = SoftwareApp.create!([
   { name: 'BitterCache', roles: [Role.first] }
 ])
 
-interfaces = Interface.create!([
-  { name: 'en0', mac_attributes: { address: "dd:a9:04:82:dc:12", ip_addrs_attributes: [{address: "192.168.1.246"}, {address: "2601:1c2:1b7f:8734:82a:d230:663a:5d08" }] } },
-  { name: 'enp59s0', mac_attributes: { address: "80:fa:5b:23:1b:3a", ip_addrs_attributes: [{address: "192.168.1.169"}, {address: "2601:1c2:1b7f:8734:9977:bad6:b3b7:b6db" }] } },
-  { name: 'docker0', mac_attributes: { address: "02:42:d3:bd:ce:7b", ip_addrs_attributes: [{address: "172.17.0.1"}] } }
-])
-
 nodes = Node.create!([
   {
     name: 'tor-ns1', fqdn: 'tor-ns1.tor.example.org', status_id: 1, datacenter_id: 1, roles: [Role.fourth],
@@ -73,4 +67,10 @@ nodes = Node.create!([
     name: 'va1-combo001', fqdn: 'va1-combo001.ops.example.org', status_id: 4, datacenter_id: 1, roles: [Role.first, Role.second],
     operating_system_id: 3
   },
+])
+
+interfaces = Interface.create!([
+  { name: 'en0', node_id: 1, mac_attributes: { address: "dd:a9:04:82:dc:12", ip_addrs_attributes: [{address: "192.168.1.246"}, {address: "2601:1c2:1b7f:8734:82a:d230:663a:5d08" }] } },
+  { name: 'enp59s0', node_id: 1, mac_attributes: { address: "80:fa:5b:23:1b:3a", ip_addrs_attributes: [{address: "192.168.1.169"}, {address: "2601:1c2:1b7f:8734:9977:bad6:b3b7:b6db" }] } },
+  { name: 'docker0', node_id: 2, mac_attributes: { address: "02:42:d3:bd:ce:7b", ip_addrs_attributes: [{address: "172.17.0.1"}] } }
 ])

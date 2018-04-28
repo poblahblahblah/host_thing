@@ -2,9 +2,9 @@
   <strong>MAC Address: </strong><%= @mac.address %><br>
   <strong>Interface Name: </strong><%= link_to @mac.interface.name, interface_path(@mac.interface.id) %><br>
   <strong>IP Addresses: </strong><%= safe_join(@mac.ip_addrs.map { |l| link_to(l.address, ip_addr_path(l.id)) }, ', '.html_safe) %><br>
-  <strong>Node: </strong>FIXME<br>
+  <strong>Node: </strong><%= link_to @mac.node.name, node_path(@mac.node.id) %><br>
 </p>
 
 <hr>
 
-<%= link_to 'Back to MAC Addresses', macs_path %>
+<%= link_to 'Back to MAC Address List', macs_path %>

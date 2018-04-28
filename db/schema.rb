@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2018_04_11_055213) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
     t.text "body"
-    t.integer "node_id"
+    t.bigint "node_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["node_id"], name: "index_comments_on_node_id"
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 2018_04_11_055213) do
   end
 
   create_table "ip_addrs", force: :cascade do |t|
-    t.integer "mac_id"
+    t.bigint "mac_id"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 2018_04_11_055213) do
   end
 
   create_table "macs", force: :cascade do |t|
-    t.integer "interface_id"
+    t.bigint "interface_id"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,8 +69,8 @@ ActiveRecord::Schema.define(version: 2018_04_11_055213) do
   end
 
   create_table "nodes_roles", id: false, force: :cascade do |t|
-    t.integer "node_id", null: false
-    t.integer "role_id", null: false
+    t.bigint "node_id", null: false
+    t.bigint "role_id", null: false
     t.index ["node_id", "role_id"], name: "index_nodes_roles_on_node_id_and_role_id", unique: true
     t.index ["role_id", "node_id"], name: "index_nodes_roles_on_role_id_and_node_id", unique: true
   end
@@ -85,8 +88,8 @@ ActiveRecord::Schema.define(version: 2018_04_11_055213) do
   end
 
   create_table "roles_software_apps", id: false, force: :cascade do |t|
-    t.integer "role_id", null: false
-    t.integer "software_app_id", null: false
+    t.bigint "role_id", null: false
+    t.bigint "software_app_id", null: false
     t.index ["role_id", "software_app_id"], name: "index_roles_software_apps_on_role_id_and_software_app_id", unique: true
     t.index ["software_app_id", "role_id"], name: "index_roles_software_apps_on_software_app_id_and_role_id", unique: true
   end
@@ -104,4 +107,5 @@ ActiveRecord::Schema.define(version: 2018_04_11_055213) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "nodes"
 end

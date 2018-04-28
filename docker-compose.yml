@@ -1,0 +1,12 @@
+version: '3.6'
+services:
+  db:
+    image: postgres:10.3-alpine
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: foobar
+      POSTGRES_DB: hostdb

@@ -47,7 +47,9 @@ software_apps = SoftwareApp.create!([
 ])
 
 interfaces = Interface.create!([
-  { name: 'en0', mac_attributes: { address: "dd:a9:04:82:dc:12", ip_addrs_attributes: [{address: "192.168.1.246"}, {address: "2601:1c2:1b7f:8734:82a:d230:663a:5d08" }] } }
+  { name: 'en0', mac_attributes: { address: "dd:a9:04:82:dc:12", ip_addrs_attributes: [{address: "192.168.1.246"}, {address: "2601:1c2:1b7f:8734:82a:d230:663a:5d08" }] } },
+  { name: 'enp59s0', mac_attributes: { address: "80:fa:5b:23:1b:3a", ip_addrs_attributes: [{address: "192.168.1.169"}, {address: "2601:1c2:1b7f:8734:9977:bad6:b3b7:b6db" }] } },
+  { name: 'docker0', mac_attributes: { address: "02:42:d3:bd:ce:7b", ip_addrs_attributes: [{address: "172.17.0.1"}] } }
 ])
 
 nodes = Node.create!([

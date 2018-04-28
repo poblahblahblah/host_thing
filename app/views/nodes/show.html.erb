@@ -10,6 +10,8 @@
   <strong>Contract Dates: </strong><% if @node.contract_start_date && node.contract_end_date %><%= @node.contract_start_date %> through <%= @node.contract_end_date %><% end %><br>
 </p>
 
+<%= @node.interfaces.methods.sort %>
+
 <hr>
 
 <p>

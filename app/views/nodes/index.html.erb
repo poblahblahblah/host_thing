@@ -14,10 +14,10 @@
  
   <% @nodes.each do |node| %>
     <tr>
-      <td><a href="nodes/<%= node.id %>"><%= node.name %></a></td>
-      <td><%= link_to node.status.name, status_path(node.status_id) %></td>
-      <td><%= safe_join(node.roles.map { |l| link_to(l.name, role_path(l.id)) }, ', '.html_safe) %></td>
-      <td><%= link_to node.datacenter.name, datacenter_path(node.datacenter.id) %></td>
+      <td><%= link_to node.name, node_path(node.name) %></td>
+      <td><%= link_to node.status.name, status_path(node.status.name) %></td>
+      <td><%= safe_join(node.roles.map { |l| link_to(l.name, role_path(l.name)) }, ', '.html_safe) %></td>
+      <td><%= link_to node.datacenter.name, datacenter_path(node.datacenter.name) %></td>
       <td><%# node.internal_ip_address %></td>
       <td><%= link_to node.operating_system.name, operating_system_path(node.operating_system.id) %></td>
       <td>

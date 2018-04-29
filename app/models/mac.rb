@@ -1,5 +1,5 @@
 class Mac < ApplicationRecord
-  before_validation :downcase_address
+  before_validation :normalize_address
   before_validation :convert_dashes_to_colons
 
   belongs_to :interface
@@ -14,12 +14,10 @@ class Mac < ApplicationRecord
     format: { with: /\A([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})\z/ }
 
   private
-
-  def downcase_address
-    self.address.downcase!
-  end
-
   def convert_dashes_to_colons
     self.address.gsub!('-', ':')
+  end
+  def normalize_address
+    self.address.try(&:downcase!).try(&:strip!)
   end
 end

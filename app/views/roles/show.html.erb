@@ -16,7 +16,7 @@ Nodes belonging to <%= @role.name %>:<br>
 
   <% @role.nodes.map.each do |node| %>
     <tr>
-      <td><%= link_to node.name, node_path(node.id) %><br></td>
+      <td><%= link_to node.name, node_path(node.name) %><br></td>
     </tr>
   <% end %>
 </table>

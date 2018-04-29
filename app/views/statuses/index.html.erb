@@ -9,7 +9,7 @@
 
   <% @statuses.each do |status| %>
     <tr>
-      <td><a href="statuses/<%= status.id %>"><%= status.name %></a></td>
+      <td><%= link_to status.name, status_path(status.name) %></td>
       <td>
         <%= link_to 'Show', status_path(status) %> |
         <%= link_to 'Edit', edit_status_path(status) %> |

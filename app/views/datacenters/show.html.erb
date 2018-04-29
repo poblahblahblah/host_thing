@@ -17,7 +17,7 @@ Nodes Belonging to <%= @datacenter.name %>:<br>
 
   <% Node.where(datacenter_id: @datacenter.id).ids.each do |node_id| %>
     <tr>
-      <td><%= link_to Node.find(node_id).name, node_path(Node.find(node_id).id) %><br></td>
+      <td><%= link_to Node.find(node_id).name, node_path(Node.find(node_id).name) %><br></td>
     </tr>
   <% end %>
 </table>

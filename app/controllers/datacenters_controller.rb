@@ -10,7 +10,7 @@ class DatacentersController < ApplicationController
   end
 
   def show
-    @datacenter = Datacenter.find(params[:id])
+    @datacenter = Datacenter.friendly.find(params[:id])
     respond_with(@datacenter)
   end
 

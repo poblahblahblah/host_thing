@@ -10,7 +10,7 @@ class NodesController < ApplicationController
   end
 
   def show
-    @node = Node.find(params[:id])
+    @node = Node.friendly.find(params[:id])
     respond_with(@node)
   end
 

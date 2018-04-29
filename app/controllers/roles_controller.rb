@@ -10,7 +10,7 @@ class RolesController < ApplicationController
   end
 
   def show
-    @role = Role.find(params[:id])
+    @role = Role.friendly.find(params[:id])
     respond_with(@role)
   end
 
@@ -65,9 +65,9 @@ class RolesController < ApplicationController
     params.require(:role).permit(:name, :software_apps)
   end
 
-  def reject_empty_roles
-    params[:node][:roles].delete_if(&:empty?)
-    params[:node][:roles].map! {|p| p = Role.find(p)}
+  def reject_empty_applications
+    params[:role][:software_apps].delete_if(&:empty?)
+    params[:role][:software_apps].map! {|p| p = Role.find(p)}
   end
 
 end

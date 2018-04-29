@@ -11,7 +11,7 @@
 
   <% @datacenters.each do |datacenter| %>
     <tr>
-      <td><a href="datacenters/<%= datacenter.id %>"><%= datacenter.name %></a></td>
+      <td><%= link_to datacenter.name, datacenter_path(datacenter.name) %></td>
       <td><%= datacenter.vendor %></td>
       <td><%= datacenter.provider %></td>
       <td>

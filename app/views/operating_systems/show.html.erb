@@ -15,7 +15,7 @@ Nodes belonging to <%= @operating_system.name %>:<br>
 
     <% Node.where(operating_system_id: @operating_system.id).ids.each do |node_id| %>
       <tr>
-        <td><%= link_to Node.find(node_id).name, node_path(Node.find(node_id).id) %><br></td>
+        <td><%= link_to Node.find(node_id).name, node_path(Node.find(node_id).name) %><br></td>
       </tr>
     <% end %>
   </table>

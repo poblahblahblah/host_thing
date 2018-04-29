@@ -15,7 +15,7 @@
       <td><%= link_to interface.name, interface_path(interface.id) %></td>
       <td><%= link_to interface.mac.address, mac_path(interface.mac.id) %></td>
       <td><%= safe_join(interface.mac.ip_addrs.map { |l| link_to(l.address, ip_addr_path(l.id)) }, ', '.html_safe) %></td>
-      <td><%= link_to interface.node.name, node_path(interface.node.id) %></td>
+      <td><%= link_to interface.node.name, node_path(interface.node.name) %></td>
       <td>
         <%= link_to 'Show', interface_path(interface) %> |
         <%= link_to 'Destroy', interface_path(interface), method: :delete, data: { confirm: 'Are you sure?' } %>

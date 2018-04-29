@@ -10,7 +10,7 @@
 
   <% @roles.each do |role| %>
     <tr>
-      <td><%= link_to role.name, role_path(role.id) %></td>
+      <td><%= link_to role.name, role_path(role.name) %></td>
       <td><%= safe_join(role.software_apps.map { |l| link_to(l.name, software_app_path(l.id)) }, ', '.html_safe) %></td>
       <td>
         <%= link_to 'Show', role_path(role) %> |

@@ -1,6 +1,6 @@
 <p>
   <strong>Software Application Name: </strong><%= @software_app.name %><br>
-  <strong>Role Memberships: </strong><%= safe_join(@software_app.roles.map { |l| link_to(Role.find(l.id).name, role_path(l.id)) }, ', '.html_safe) %><br>
+  <strong>Role Memberships: </strong><%= safe_join(@software_app.roles.map { |l| link_to(Role.find(l.id).name, role_path(l.name)) }, ', '.html_safe) %><br>
 </p>
 
 <hr>
@@ -16,7 +16,7 @@ Nodes belonging to <%= @software_app.name %>:<br>
 
   <% @software_app.nodes.map.each do |node| %>
     <tr>
-      <td><%= link_to node.name, node_path(node.id) %><br></td>
+      <td><%= link_to node.name, node_path(node.name) %><br></td>
     </tr>
   <% end %>
 </table>

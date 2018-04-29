@@ -10,7 +10,7 @@ class StatusesController < ApplicationController
   end
 
   def show
-    @status = Status.find(params[:id])
+    @status = Status.friendly.find(params[:id])
     respond_with(@status)
   end
 

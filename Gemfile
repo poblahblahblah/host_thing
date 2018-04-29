@@ -41,6 +41,9 @@ gem 'jbuilder', '~> 2.5'
 # allows us to use respond_to in an entire controller
 gem 'responders'
 
+# allows pretty rurls
+gem 'friendly_id', '~> 5.2.4'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -53,8 +56,6 @@ group :development, :test do
 end
 
 group :development do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.6.0'
   gem 'listen', '>= 3.0.5', '< 3.2'

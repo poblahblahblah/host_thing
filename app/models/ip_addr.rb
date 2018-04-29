@@ -1,7 +1,7 @@
 require 'resolv'
 
 class IpAddr < ApplicationRecord
-  before_validation :downcase_address
+  before_validation :normalize_address
 
   # FIXME(pob): the `required: false` should be removed. It's only in here because of
   # https://github.com/rails/rails/issues/25198#issuecomment-372894070. Once that is
@@ -15,8 +15,7 @@ class IpAddr < ApplicationRecord
     format: { with: Regexp.union(Resolv::IPv4::Regex, Resolv::IPv6::Regex) }
 
   private
-
-  def downcase_address
-    self.address.downcase!
+  def normalize_address
+    self.address.try(&:downcase!).try(&:strip!)
   end
 end

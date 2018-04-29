@@ -49,23 +49,23 @@ software_apps = SoftwareApp.create!([
 nodes = Node.create!([
   {
     name: 'tor-ns1', fqdn: 'tor-ns1.tor.example.org', status_id: 1, datacenter_id: 1, roles: [Role.fourth],
-    operating_system_id: 1
+    operating_system_id: 1, serial: '12345'
   },
   {
     name: 'tor-ns2', fqdn: 'tor-ns2.tor.example.org', status_id: 1, datacenter_id: 1, roles: [Role.fourth],
-    operating_system_id: 1
+    operating_system_id: 1, serial: '67890'
   },
   {
     name: 'tor-bit001', fqdn: 'tor-bit001.ops.example.org', status_id: 4, datacenter_id: 2, roles: [Role.first],
-    operating_system_id: 3
+    operating_system_id: 3, serial: 'a1b2c3'
   },
   {
     name: 'tor-bit002', fqdn: 'tor-bit002.ops.example.org', status_id: 4, datacenter_id: 2, roles: [Role.first],
-    operating_system_id: 3
+    operating_system_id: 3, serial: 'd4e5f6'
   },
   {
     name: 'va1-combo001', fqdn: 'va1-combo001.ops.example.org', status_id: 4, datacenter_id: 1, roles: [Role.first, Role.second],
-    operating_system_id: 3
+    operating_system_id: 3, serial: 'boopbopbam'
   },
 ])
 

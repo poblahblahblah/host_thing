@@ -11,7 +11,7 @@
   <% @software_apps.each do |software_app| %>
     <tr>
       <td><%= link_to software_app.name, software_app_path(software_app.id) %></td>
-      <td><%= safe_join(software_app.roles.map { |l| link_to l.name, role_path(l.id) }, ', '.html_safe) %></td>
+      <td><%= safe_join(software_app.roles.map { |l| link_to l.name, role_path(l.name) }, ', '.html_safe) %></td>
       <td>
         <%= link_to 'Show', software_app_path(software_app) %> |
         <%= link_to 'Edit', edit_software_app_path(software_app) %> |

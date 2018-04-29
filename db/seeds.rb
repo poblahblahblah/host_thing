@@ -74,3 +74,11 @@ interfaces = Interface.create!([
   { name: 'enp59s0', node_id: 1, mac_attributes: { address: "80:fa:5b:23:1b:3a", ip_addrs_attributes: [{address: "192.168.1.169"}, {address: "2601:1c2:1b7f:8734:9977:bad6:b3b7:b6db" }] } },
   { name: 'docker0', node_id: 2, mac_attributes: { address: "02:42:d3:bd:ce:7b", ip_addrs_attributes: [{address: "172.17.0.1"}] } }
 ])
+
+users = User.create!(
+  { 
+    email: 'admin@example.com',
+    password: 'foobar', 
+    password_confirmation: 'foobar'
+  }
+)
